@@ -1,0 +1,16 @@
+[gd_scene format=3 uid="uid://bdcm03kej2bs1"]
+
+[ext_resource type="Texture2D" uid="uid://co0c7kkricy8a" path="res://assets/rocket.png" id="1_3341w"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3341w"]
+size = Vector2(74, 164)
+
+[node name="Rocket" type="RigidBody2D" unique_id=551911315]
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=360450744]
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("1_3341w")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=918171869]
+position = Vector2(-5, -2)
+shape = SubResource("RectangleShape2D_3341w")
