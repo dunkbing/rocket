@@ -1,9 +1,13 @@
 [gd_scene format=3 uid="uid://jpnhx07hmtcd"]
 
+[ext_resource type="Script" uid="uid://1rvcofwudbos" path="res://scenes/rock.gd" id="1_5yrgr"]
 [ext_resource type="Texture2D" uid="uid://bduj48fkfohr3" path="res://assets/rock1.png" id="1_yitr1"]
+[ext_resource type="PackedScene" uid="uid://dbk6orcqn8ok0" path="res://scenes/explosion.tscn" id="2_nkco8"]
 
 [node name="Rock1" type="StaticBody2D" unique_id=901040342]
 collision_layer = 2
+script = ExtResource("1_5yrgr")
+explosion_scene = ExtResource("2_nkco8")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1606913780]
 texture = ExtResource("1_yitr1")

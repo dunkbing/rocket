@@ -1,0 +1,69 @@
+[gd_scene format=3 uid="uid://dbk6orcqn8ok0"]
+
+[ext_resource type="Script" uid="uid://dklqcusmn4air" path="res://scenes/explosion.gd" id="1_17npe"]
+[ext_resource type="Texture2D" uid="uid://bduj48fkfohr3" path="res://assets/rock1.png" id="1_nfeox"]
+
+[sub_resource type="Curve" id="Curve_nfeox"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_aw4cw"]
+curve = SubResource("Curve_nfeox")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_nfeox"]
+particle_flag_disable_z = true
+emission_shape = 1
+emission_sphere_radius = 1.0
+direction = Vector3(0, 0, 0)
+spread = 180.0
+initial_velocity_min = 150.0
+initial_velocity_max = 350.0
+angular_velocity_min = -360.0
+angular_velocity_max = 359.99997
+gravity = Vector3(0, 980, 0)
+scale_min = 0.049999997
+scale_max = 0.099999994
+scale_curve = SubResource("CurveTexture_aw4cw")
+
+[sub_resource type="Gradient" id="Gradient_nfeox"]
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_aw4cw"]
+gradient = SubResource("Gradient_nfeox")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0.5, 0)
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_aw4cw"]
+particle_flag_disable_z = true
+emission_shape = 1
+emission_sphere_radius = 6.0
+direction = Vector3(0, 0, 0)
+spread = 180.0
+initial_velocity_min = 20.0
+initial_velocity_max = 60.0
+gravity = Vector3(0, -40, 0)
+damping_min = 20.0
+damping_max = 40.0
+scale_min = 0.29999998
+scale_max = 0.59999996
+color = Color(0.53333336, 0.53333336, 0.53333336, 1)
+
+[node name="Explosion" type="GPUParticles2D" unique_id=2045147281]
+emitting = false
+amount = 16
+texture = ExtResource("1_nfeox")
+lifetime = 0.8
+one_shot = true
+explosiveness = 1.0
+process_material = SubResource("ParticleProcessMaterial_nfeox")
+script = ExtResource("1_17npe")
+
+[node name="Smoke" type="GPUParticles2D" parent="." unique_id=1208794943]
+emitting = false
+amount = 10
+texture = SubResource("GradientTexture2D_aw4cw")
+lifetime = 1.2
+one_shot = true
+explosiveness = 0.8
+process_material = SubResource("ParticleProcessMaterial_aw4cw")

@@ -27,6 +27,16 @@ func _ready() -> void:
     # Rocket sits still until launched.
     freeze = true
     _clear_trajectory()
+    # Report contacts so we can blow up rocks we hit.
+    contact_monitor = true
+    max_contacts_reported = 4
+    body_entered.connect(_on_body_entered)
+
+
+func _on_body_entered(body: Node) -> void:
+    # Rocks add themselves to the "rocks" group in their _ready().
+    if body.is_in_group("rocks") and body.has_method("explode"):
+        body.explode()
 
 
 func _input(event: InputEvent) -> void:
